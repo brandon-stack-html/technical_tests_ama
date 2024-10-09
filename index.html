@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles to supplement Tailwind */
+        .sidebar-link.active {
+            background-color: #EBF5FF;
+            color: #2563EB;
+        }
+        .progress-bar {
+            background-color: #E5E7EB;
+            height: 0.5rem;
+            border-radius: 9999px;
+        }
+        .progress-bar-fill-blue {
+            background-color: #2563EB;
+            height: 100%;
+            border-radius: 9999px;
+        }
+        .progress-bar-fill-purple {
+            background-color: #7C3AED;
+            height: 100%;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
+            <div class="p-6">
+                <div class="flex items-center space-x-3 mb-8">
+                    <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+                    <div>
+                        <h2 class="font-semibold">Cliente</h2>
+                        <p class="text-sm text-gray-500">Premium Account</p>
+                    </div>
+                </div>
+                
+                <nav class="space-y-1">
+                    <a href="#" class="sidebar-link active flex items-center space-x-3 p-3 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        <span>Dashboard</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>History</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        <span>funds</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                        </svg>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+            </div>
+            
+            <div class="mt-auto p-6">
+                <button class="flex items-center space-x-3 text-gray-700 hover:text-red-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                        <polyline points="16 17 21 12 16 7"/>
+                        <line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    <span>Log Out</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-6 max-w-[1200px] mx-auto">
+                <header class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold">Dashboard</h1>
+                    <div class="space-x-4">
+                        <button class="px-4 py-2 bg-blue-500 text-white rounded">Subscribe Fund</button>
+                        <button class="px-4 py-2 border border-gray-300 rounded">Unsubscribe Fund</button>
+                    </div>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Current Balance Card -->
+                    <div class="bg-white rounded-lg p-6">
+                        <h2 class="text-lg font-semibold mb-4">Current Balance</h2>
+                        <div class="text-3xl font-bold mb-2">$500,000</div>
+                        <div class="text-green-600 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="7" y1="17" x2="17" y2="7"/>
+                                <polyline points="7 7 17 7 17 17"/>
+                            </svg>
+                            15.1% from last month
+                        </div>
+                    </div>
+
+                    <!-- FPV Funds Card -->
+                    <div class="bg-white rounded-lg p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-lg font-semibold">FPV Funds</h2>
+                                <div class="text-sm text-gray-500">Fixed Value</div>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-blue-100"></div>
+                        </div>
+                        <div class="text-3xl font-bold mb-2">$200,000</div>
+                        <div class="progress-bar mb-2">
+                            <div class="progress-bar-fill-blue" style="width: 40%"></div>
+                        </div>
+                        <div class="text-gray-600">40% of total</div>
+                    </div>
+
+                    <!-- FIC Funds Card -->
+                    <div class="bg-white rounded-lg p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-lg font-semibold">FIC Funds</h2>
+                                <div class="text-sm text-gray-500">Variable Value</div>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-purple-100"></div>
+                        </div>
+                        <div class="text-3xl font-bold mb-2">$300,000</div>
+                        <div class="progress-bar mb-2">
+                            <div class="progress-bar-fill-purple" style="width: 60%"></div>
+                        </div>
+                        <div class="text-gray-600">60% of total</div>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="bg-white rounded-lg p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold">Recent Transactions</h2>
+                        <button class="text-blue-600">View All</button>
+                    </div>
+
+                    <!-- Transaction Items -->
+                    <div class="space-y-4">
+                        <!-- Repeat this structure for each transaction -->
+                        <div class="flex justify-between items-center py-4 border-b">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 rounded-full bg-green-500 mr-4"></div>
+                                <div>
+                                    <div class="font-medium">Collection Client</div>
+                                    <div class="text-sm text-gray-500">2024-10-08</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">COP $75,000</div>
+                                <div class="text-sm text-gray-500">FPV</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-4 border-b">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 rounded-full bg-red-500 mr-4"></div>
+                                <div>
+                                    <div class="font-medium">Client Ecopetrol</div>
+                                    <div class="text-sm text-gray-500">2024-10-07</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">COP $125,000</div>
+                                <div class="text-sm text-gray-500">FPV</div>
+                            </div>
+                        </div>
+
+                        <!-- Add more transaction items as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
